@@ -1,0 +1,127 @@
+<div class="container">
+    <form [formGroup]="registrationForm" class="form-horizontal" role="form" method="POST" (submit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>Register New User</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">Name</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                        <input formControlName="name" type="text" name="name" class="form-control" id="name"
+                            placeholder="John Doe" autofocus required>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="name.touched && name.invalid" class="col-md-3">
+                <div *ngIf="name.errors.required" class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        Name is required
+                    </span>
+                </div>
+                <div *ngIf="name.errors.spaceNotAllowed" class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        {{name.errors.spaceNotAllowed}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="email">E-Mail Address</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                        <input formControlName="email" type="text" name="email" class="form-control" id="email"
+                            placeholder="you@example.com" autofocus>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="email.touched && email.invalid" class="col-md-3">
+                <div *ngIf="email.errors.required" class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        Email is required
+                    </span>
+                </div>
+                <div *ngIf="email.errors.email" class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        Please provide a valide Email
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div formGroupName="matchPassword">
+            <div class="row">
+                <div class="col-md-3 field-label-responsive">
+                    <label for="password">Password</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group has-danger">
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                            <input formControlName="password" type="password" name="password" class="form-control"
+                                id="password" placeholder="Password">
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="password.touched && password.invalid" class="col-md-3">
+                    <div *ngIf="password.errors.required" class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            Password is required
+                        </span>
+                    </div>
+                    <div *ngIf="password.errors.passwordLength" class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            Minimum password length is {{ password.errors.passwordLength.requiredLength }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 field-label-responsive">
+                    <label for="confirmPassword">Confirm Password</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group has-danger">
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                            <input formControlName="confirmPassword" type="password" name="confirmPassword"
+                                class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="col-md-3">
+                    <div *ngIf="confirmPassword.errors.required" class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            Password is required
+                        </span>
+                    </div>
+                    <div *ngIf="confirmPassword.errors.passwordMissmatch" class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            {{confirmPassword.errors.passwordMissmatch}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-success"><i
+                        class="fa fa-user-plus"></i> Register</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<button (click)="test()">test</button>
