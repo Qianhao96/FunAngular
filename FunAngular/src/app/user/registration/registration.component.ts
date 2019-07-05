@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegistrationValidators } from './registration.validators';
 import { RegistrationService } from './registration.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -11,7 +13,9 @@ import { RegistrationService } from './registration.service';
 export class RegistrationComponent implements OnInit {
 
   //inject the desired service, can be as many as you want
-  constructor(public service: RegistrationService) { }
+  constructor(public service: RegistrationService,
+    private router: Router,
+    private toastrService: ToastrService) { }
 
 
   //put code where you want to excute when the page is loaded
@@ -69,6 +73,7 @@ export class RegistrationComponent implements OnInit {
     this.service.validateEmail().subscribe(
       res => {
         console.log(res);
+        this.toastrService.success('Welcome!!!')
       }
     )
   }
@@ -81,9 +86,10 @@ export class RegistrationComponent implements OnInit {
     }
     this.service.register(body).subscribe(
       (res: any) => {
-        console.log(res)
+        console.log(res);
         if (res.succeeded) {
-          this.registrationForm.reset();
+          this.toastrService.success('Welcome!!!');
+          this.router.navigate(['/home']);
         }
       },
       err => {
