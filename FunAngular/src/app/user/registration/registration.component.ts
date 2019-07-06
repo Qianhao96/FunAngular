@@ -89,7 +89,7 @@ export class RegistrationComponent implements OnInit {
         console.log(res);
         if (res.succeeded) {
           this.toastrService.success('Welcome!!!');
-          this.router.navigate(['/home']);
+          this.router.navigate(['/user/login']);
         }
       },
       err => {

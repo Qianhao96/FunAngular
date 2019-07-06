@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
     private toastrService: ToastrService) { }
 
   ngOnInit() {
+    if(localStorage.getItem('token') != null){
+      this.router.navigate(['/home']);
+    }
   }
 
   loginForm = new FormGroup({
@@ -48,7 +51,7 @@ export class LoginComponent implements OnInit {
         else
           console.log(err);
       }
-    )
+    );
   }
 
 }

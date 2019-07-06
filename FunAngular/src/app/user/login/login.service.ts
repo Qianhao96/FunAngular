@@ -10,6 +10,6 @@ export class LoginService {
 
   loginUrl = 'http://localhost:59372/api/ApplicationUser/Login'
   login(formData){
-    return this.http.post(this.loginUrl, formData)
+    return this.http.post(this.loginUrl, formData);
   }
 }
