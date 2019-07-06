@@ -91,6 +91,8 @@ export class RegistrationComponent implements OnInit {
           this.toastrService.success('Welcome!!!');
           this.router.navigate(['/user/login']);
         }
+        else
+          this.toastrService.warning(res.errors[0].description);
       },
       err => {
         console.log(err);
