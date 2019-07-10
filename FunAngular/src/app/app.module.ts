@@ -16,13 +16,17 @@ import { LoginService } from './user/login/login.service';
 import { HomeComponent } from './home/home.component';
 import { HomeService } from './home/home.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { AdminComponent } from './admin/admin.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     RegistrationComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    AdminComponent,
+    ForbiddenComponent
   ],
   imports: [
     BrowserModule,

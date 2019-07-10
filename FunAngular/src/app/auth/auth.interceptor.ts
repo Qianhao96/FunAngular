@@ -5,6 +5,8 @@ import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { normalizeStyles } from '@angular/animations/browser/src/util';
 
+
+//Every api need the token to authenticate the user, or use (auth.interceptor)
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
@@ -19,9 +21,13 @@ export class AuthInterceptor implements HttpInterceptor {
                 tap(
                     succ => { },
                     err => {
-                        if (err.status == 401)
+                        if (err.status == 401) {
                             localStorage.removeItem('token')
-                        this.router.navigate(['/user/login']);
+                            this.router.navigate(['/user/login']);
+                        }
+                        else if(err.status == 403){
+                            this.router.navigate(['/forbidden']);
+                        }
                     }
                 )
             )

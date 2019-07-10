@@ -14,6 +14,15 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
     if (localStorage.getItem('token') != null) {
+      let roles = next.data['permittedRoles'] as Array<string>;
+      if (roles) {
+        if (this.roleMatch(roles))
+          return true;
+        else {
+          this.router.navigate(['/forbidden']);
+          return false;
+        }
+      }
       return true;
     }
     else {
@@ -21,5 +30,18 @@ export class AuthGuard implements CanActivate {
       this.toastrService.warning('Please login');
       return false;
     }
+  }
+
+  roleMatch(allowedRoles): boolean {
+    var isMatch = false;
+    var payLoad = JSON.parse(window.atob(localStorage.getItem('token').split('.')[1]));
+    var userRoles = payLoad.role
+    allowedRoles.forEach(element => {
+      if (userRoles == element) {
+        isMatch = true;
+        return false;
+      }
+    });
+    return isMatch;
   }
 }
