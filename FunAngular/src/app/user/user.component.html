@@ -1,10 +1,15 @@
-<div class="container row mid">
-      <div class="nav flex-column col-md-2">
-            <h2 routerLinkActive='active' routerLink='/user/login'>Sign IN</h2>
-            <h2 routerLinkActive='active' routerLink='/user/registration'>Sign Up</h2>
+<div class="card border-dark mb-3 mid">
+      <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                  <li class="nav-item">
+                        <a class="nav-link" routerLinkActive='active' routerLink='/user/login' href="#">Sign IN</a>
+                  </li>
+                  <li class="nav-item">
+                        <a class="nav-link" routerLinkActive='active' routerLink='/user/registration' href="#">Sign Up</a>
+                  </li>
+            </ul>
       </div>
-
-      <div class="col-md-10">
+      <div class="card-body">
             <router-outlet></router-outlet>
       </div>
 </div>
