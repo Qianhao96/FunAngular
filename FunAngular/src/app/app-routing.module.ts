@@ -9,7 +9,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'user/registration', pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   {
     path: 'user', component: UserComponent,
     children: [

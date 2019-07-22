@@ -18,6 +18,7 @@ import { HomeService } from './home/home.service';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { AdminComponent } from './admin/admin.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { HeaderComponent } from './components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     LoginComponent,
     HomeComponent,
     AdminComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
