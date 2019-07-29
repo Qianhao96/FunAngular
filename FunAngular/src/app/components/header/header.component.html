@@ -9,14 +9,17 @@
 
     <!-- Nav Left Position -->
     <div class="nav-left vertical-center">
-        <a class="nav-link active" href="#">Active</a>
+      <a *ngIf="isLogedIn && isAdmin" routerLink="/admin" class="nav-link">Admin</a>
     </div>
 
     <!-- Nav Right Position -->
     <div class="nav-right">
-      <a class="app-btn vertical-center" routerLinkActive='active' routerLink='/user/login' href="#" rel="nofollow">
+      <a *ngIf="!isLogedIn; else notLogedIn" class="app-btn vertical-center" routerLink='/user/login' href="#" rel="nofollow">
         <span>Login</span>
       </a>
+      <ng-template #notLogedIn>
+        <a class="app-btn vertical-center" routerLink='' (click)="onLogout()">Logout</a>
+      </ng-template>
     </div>
   </nav>
 </div>

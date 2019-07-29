@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HomeService } from './home.service';
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,14 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private toastrService: ToastrService, private service: HomeService) { }
+  constructor(private router: Router, 
+    private toastrService: ToastrService, 
+    private service: HomeService,
+    private userService: UserService) { }
 
   userDetails;
+
+  isAdmin;
 
   ngOnInit() {
     this.service.getUserProfile().subscribe(
@@ -22,12 +28,7 @@ export class HomeComponent implements OnInit {
       }
     )
 
-  }
+    this.isAdmin = this.userService.isAdmin();
 
-  onLogout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/user/login']);
-    this.toastrService.success('Logout successfully');
-  }
-
+    }
 }
