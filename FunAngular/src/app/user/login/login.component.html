@@ -1,4 +1,5 @@
-<form [formGroup]="loginForm" #form='ngForm' class="form-horizontal" role="form" method="POST" (submit)="onSubmit(form)">
+<form [formGroup]="loginForm" #form='ngForm' class="form-horizontal" role="form" method="POST"
+  (submit)="onSubmit(form)">
   <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -10,10 +11,9 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="form-group has-danger">
-        <label class="sr-only" for="email">E-Mail Address</label>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
           <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-          <input formControlName="userName" type="text" name="email" class="form-control" id="email"
+          <input formControlName="userName" type="text" name="userName" class="form-control" id="userName"
             placeholder="John Doe" required>
         </div>
       </div>
@@ -30,7 +30,6 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <div class="form-group">
-        <label class="sr-only" for="password">Password</label>
         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
           <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
           <input formControlName="password" type="password" name="password" class="form-control" id="password"
@@ -62,7 +61,8 @@
     <div class="col-md-6">
       <button [disabled]="!loginForm.valid" type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i>
         Login</button>
-      <a class="btn btn-link" href="">Forgot Your Password?</a>
+      <a class="btn btn-link" routerLinkActive='active' routerLink='/user/reset-password' href="#">Forgot Your
+        Password?</a>
     </div>
   </div>
 </form>

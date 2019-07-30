@@ -9,7 +9,7 @@
         </div>
         <div class="row">
             <div class="col-md-3 field-label-responsive">
-                <label for="name">Name</label>
+                <label for="name">Username</label>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
@@ -110,6 +110,48 @@
                             {{confirmPassword.errors.passwordMissmatch}}
                         </span>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="question">Question</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-question"></i></div>
+                        <input formControlName="question" type="text" name="question" class="form-control" id="question"
+                            placeholder="what is your favorite color..." required>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="question.touched && question.invalid" class="col-md-3">
+                <div *ngIf="question.errors.required" class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        Security question is required.
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="answer">Answer</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                        <input formControlName="answer" type="text" name="answer" class="form-control" id="answer"
+                            placeholder="Blue" required>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="answer.touched && answer.invalid" class="col-md-3">
+                <div *ngIf="answer.errors.required" class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        Answer is required.
+                    </span>
                 </div>
             </div>
         </div>

@@ -38,7 +38,9 @@ export class RegistrationComponent implements OnInit {
         RegistrationValidators.passwordLength
       ]),
       confirmPassword: new FormControl('', Validators.required)
-    }, { validators: this.comparePasswords })
+    }, { validators: this.comparePasswords }),
+    question: new FormControl('', Validators.required),
+    answer: new FormControl('', Validators.required)
   });
 
   //custome validator within the same file as where it is used 
@@ -69,6 +71,14 @@ export class RegistrationComponent implements OnInit {
     return this.registrationForm.get('matchPassword.confirmPassword');
   }
 
+  get question(){
+    return this.registrationForm.get('question');
+  }
+
+  get answer(){
+    return this.registrationForm.get('answer');
+  }
+
   test() {
     this.service.validateEmail().subscribe(
       res => {
@@ -82,7 +92,9 @@ export class RegistrationComponent implements OnInit {
     let body = {
       UserName: this.registrationForm.value.name,
       Email: this.registrationForm.value.email,
-      Password: this.registrationForm.value.matchPassword.password
+      Password: this.registrationForm.value.matchPassword.password,
+      Question: this.registrationForm.value.question,
+      Answer: this.registrationForm.value.answer
     }
     this.service.register(body).subscribe(
       (res: any) => {
