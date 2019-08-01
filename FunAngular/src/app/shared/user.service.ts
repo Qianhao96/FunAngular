@@ -24,4 +24,15 @@ export class UserService {
   }
 
 
+  checkAnswerUrl = 'http://localhost:59372/api/ApplicationUser/Check-Answer'
+  checkAnswer(body){
+    return this.http.post(this.checkAnswerUrl, body);
+  }
+
+  changePasswordUrl = 'http://localhost:59372/api/ApplicationUser/New-Password'
+  changePassword(body){
+    return this.http.post(this.changePasswordUrl, body);
+  }
+
+
 }
