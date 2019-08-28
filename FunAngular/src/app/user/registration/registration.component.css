@@ -1,6 +1,11 @@
 @media(min-width: 768px) {
-    .field-label-responsive {
-      padding-top: .5rem;
-      text-align: right;
-    }
+  .field-label-responsive {
+    padding-top: .5rem;
+    text-align: right;
   }
+}
+
+.u-inline {
+	position: relative;
+	display: inline-flex;
+}
