@@ -19,7 +19,6 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { AdminComponent } from './admin/admin.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ResetPasswordComponent } from './user/reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +28,7 @@ import { ResetPasswordComponent } from './user/reset-password/reset-password.com
     HomeComponent,
     AdminComponent,
     ForbiddenComponent,
-    HeaderComponent,
-    ResetPasswordComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

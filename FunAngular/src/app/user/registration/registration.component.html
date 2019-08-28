@@ -1,169 +1,115 @@
-<div class="container">
-    <form [formGroup]="registrationForm" #f="ngForm" role="form" method="POST" (submit)="onSubmit()">
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <h2>Register New User</h2>
-                <hr>
-            </div>
+
+<form [formGroup]="registrationForm" #f="ngForm" role="form" method="POST" (submit)="onSubmit()">
+    <div class="container">
+        <div class="col-md-6">
+            <h2>Register New User</h2>
         </div>
-        <div class="row">
-            <div class="col-md-3 field-label-responsive">
-                <label for="name">Username</label>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
-                        <input formControlName="name" type="text" name="name" class="form-control" id="name"
-                            placeholder="John Doe" required>
+
+        <div>
+            <div >
+                <h5>Username</h5>
+                <div *ngIf="name.touched && name.invalid">
+                    <div *ngIf="name.errors.required" class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            Name is required
+                        </span>
+                    </div>
+                    <div *ngIf="name.errors.spaceNotAllowed" class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            {{name.errors.spaceNotAllowed}}
+                        </span>
                     </div>
                 </div>
             </div>
-            <div *ngIf="name.touched && name.invalid" class="col-md-3">
-                <div *ngIf="name.errors.required" class="form-control-feedback">
-                    <span class="text-danger align-middle">
-                        Name is required
-                    </span>
-                </div>
-                <div *ngIf="name.errors.spaceNotAllowed" class="form-control-feedback">
-                    <span class="text-danger align-middle">
-                        {{name.errors.spaceNotAllowed}}
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 field-label-responsive">
-                <label for="email">E-Mail Address</label>
-            </div>
-            <div class="col-md-6">
+            <div>
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                        <input formControlName="email" type="text" name="email" class="form-control" id="email"
-                            placeholder="you@example.com">
+                        <input formControlName="name" type="text" name="name" class="form-control" id="name" required>
                     </div>
                 </div>
             </div>
-            <div *ngIf="email.touched && email.invalid" class="col-md-3">
-                <div *ngIf="email.errors.required" class="form-control-feedback">
-                    <span class="text-danger align-middle">
-                        Email is required
-                    </span>
+        </div>
+
+        <div>
+            <div>
+                <h5>E-Mail Address</h5>
+                <div *ngIf="email.touched && email.invalid">
+                    <div *ngIf="email.errors.required" class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            Email is required
+                        </span>
+                    </div>
+                    <div *ngIf="email.errors.email" class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            Please provide a valide Email
+                        </span>
+                    </div>
                 </div>
-                <div *ngIf="email.errors.email" class="form-control-feedback">
-                    <span class="text-danger align-middle">
-                        Please provide a valide Email
-                    </span>
+            </div>
+            <div>
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <input formControlName="email" type="text" name="email" class="form-control" id="email">
+                    </div>
                 </div>
             </div>
         </div>
+
         <div formGroupName="matchPassword">
-            <div class="row">
-                <div class="col-md-3 field-label-responsive">
-                    <label for="password">Password</label>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group has-danger">
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input formControlName="password" type="password" name="password" class="form-control"
-                                id="password" placeholder="Password">
+            <div>
+                <div >
+                    <h5 for="password">Password</h5>
+                    <div *ngIf="password.touched && password.invalid">
+                        <div *ngIf="password.errors.required" class="form-control-feedback">
+                            <span class="text-danger align-middle">
+                                Password is required
+                            </span>
                         </div>
                     </div>
                 </div>
-                <div *ngIf="password.touched && password.invalid" class="col-md-3">
-                    <div *ngIf="password.errors.required" class="form-control-feedback">
-                        <span class="text-danger align-middle">
-                            Password is required
-                        </span>
-                    </div>
-                    <div *ngIf="password.errors.passwordLength" class="form-control-feedback">
-                        <span class="text-danger align-middle">
-                            Minimum password length is {{ password.errors.passwordLength.requiredLength }}
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3 field-label-responsive">
-                    <label for="confirmPassword">Confirm Password</label>
-                </div>
-                <div class="col-md-6">
+                <div>
                     <div class="form-group has-danger">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input formControlName="confirmPassword" type="password" name="confirmPassword"
-                                class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                            <input formControlName="password" type="password" name="password" class="form-control" id="password">
                         </div>
                     </div>
                 </div>
-                <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="col-md-3">
-                    <div *ngIf="confirmPassword.errors.required" class="form-control-feedback">
-                        <span class="text-danger align-middle">
-                            Password is required
-                        </span>
-                    </div>
-                    <div *ngIf="confirmPassword.errors.passwordMissmatch" class="form-control-feedback">
-                        <span class="text-danger align-middle">
-                            {{confirmPassword.errors.passwordMissmatch}}
-                        </span>
-                    </div>
-                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 field-label-responsive">
-                <label for="question">Question</label>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-question"></i></div>
-                        <input formControlName="question" type="text" name="question" class="form-control" id="question"
-                            placeholder="what is your favorite color..." required>
-                    </div>
-                </div>
-            </div>
-            <div *ngIf="question.touched && question.invalid" class="col-md-3">
-                <div *ngIf="question.errors.required" class="form-control-feedback">
-                    <span class="text-danger align-middle">
-                        Security question is required.
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 field-label-responsive">
-                <label for="answer">Answer</label>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                        <input formControlName="answer" type="text" name="answer" class="form-control" id="answer"
-                            placeholder="Blue" required>
-                    </div>
-                </div>
-            </div>
-            <div *ngIf="answer.touched && answer.invalid" class="col-md-3">
-                <div *ngIf="answer.errors.required" class="form-control-feedback">
-                    <span class="text-danger align-middle">
-                        Answer is required.
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-success"><i
-                        class="fa fa-user-plus"></i> Register</button>
-            </div>
-        </div>
-    </form>
-</div>
 
+            <div>
+                <div>
+                    <h5 for="confirmPassword">Confirm Password</h5>
+                    <div *ngIf="confirmPassword.touched && confirmPassword.invalid">
+                        <div *ngIf="confirmPassword.errors.required" class="form-control-feedback">
+                            <span class="text-danger align-middle">
+                                Password is required
+                            </span>
+                        </div>
+                        <div *ngIf="confirmPassword.errors.passwordMissmatch" class="form-control-feedback">
+                            <span class="text-danger align-middle">
+                                {{confirmPassword.errors.passwordMissmatch}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group has-danger">
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <input formControlName="confirmPassword" type="password" name="confirmPassword" class="form-control" id="confirmPassword">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<button (click)="test()">test</button>
+        <div>
+            <button type="submit" [disabled]="!registrationForm.valid" class="btn btn-success">
+                    Register
+            </button>
+        </div>
+
+        <div>
+            <a class="nav-link" routerLinkActive='active' routerLink='/user/login' href="#">Have an account?</a>
+        </div>
+    </div>
+</form>
