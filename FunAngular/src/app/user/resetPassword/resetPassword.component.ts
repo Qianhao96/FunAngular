@@ -53,7 +53,7 @@ export class ResetPasswordComponent implements OnInit {
 			(res: any) => {
 				console.log(res);
 				if (res.succeeded) {
-					this.toastrService.success('Welcome!!!');
+					this.toastrService.success('Successfull!!!');
 					this.router.navigate(['/user/login']);
 				}
 				else

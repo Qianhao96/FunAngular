@@ -1,59 +1,51 @@
 <form [formGroup]="loginForm" #form='ngForm' class="form-horizontal" role="form" method="POST"(submit)="onSubmit(form)">
 	<div class="container pl-5 pr-5">
-		<div>
-			<div class="mt-4 mb-4">
-				<h3>Please Login</h3>
-			</div>
-		</div>
+		<h3 class="d-flex justify-content-center font-weight-bold text-body" >Log in</h3>
+		<small class="d-flex justify-content-center font-weight-bold text-black-50 mb-5" style="font-size: 15px">to your account</small>
 		
-		<div>
-			<div>
-				<h5 class="u-inline"> Email
-					<div *ngIf="email.touched && email.invalid">
-						<div *ngIf="email.errors.required" class="form-control-feedback">
-							<span class="text-danger align-middle">
-								- This fild is required
-							</span>
-						</div>
-						<div *ngIf="email.errors.email" class="form-control-feedback">
-							<span class="text-danger align-middle">
-								- Please enter corrent email
-							</span>
-						</div>
-					</div>
-				</h5>
+		<div class="mb-2">
+			<div *ngIf="email.touched && email.invalid">
+				<div *ngIf="email.errors.required" class="form-control-feedback">
+					<small class="text-danger align-middle">
+						This fild is required
+					</small>
+				</div>
+				<div *ngIf="email.errors.email" class="form-control-feedback">
+					<small class="text-danger align-middle">
+						Please enter corrent email
+					</small>
+				</div>
 			</div>
-			<div class="form-group has-danger">
+
+			<div class="form-group has-danger d-flex justify-content-center">
 				<div class="input-group">
-					<input formControlName="email" type="email" name="email" class="form-control" id="email" ngModel email="true" required>
+					<input formControlName="email" type="email" name="email" class="form-control text-center input-corner-round" id="Email" ngModel email="true" placeholder="email" required>
 				</div>
 			</div>
 		</div>
 		
 		<div>
-			<div >
-				<h5 class="u-inline"> 
-					Password
-					<div *ngIf="password.touched && password.invalid">
-							<div *ngIf="password.errors.required" class="form-control-feedback">
-								<span class="text-danger align-middle">
-									- This fild is required
-								</span>
-							</div>
+			<div *ngIf="password.touched && password.invalid">
+					<div *ngIf="password.errors.required" class="form-control-feedback">
+						<small class="text-danger align-middle">
+							This fild is required
+						</small>
 					</div>
-				</h5>
 			</div>
+
 			<div class="form-group">
 				<div class="input-group">
-					<input formControlName="password" type="password" name="password" class="form-control" id="password" required>
+					<input formControlName="password" type="password" name="password" class="form-control text-center input-corner-round" id="Password" placeholder="password" required>
 				</div>
 			</div>
 		</div>
 
 		<div>
-			<a class="nav-link" routerLinkActive='active' routerLink='/user/resetPassword' href="#">
-				Forgot your password?
-			</a>
+			<span class="u-inline">
+				<a class="nav-link" routerLinkActive='active' routerLink='/user/resetPassword' href="#">
+					Forgot your password?
+				</a>
+			</span>
 		</div>
 		
 		<div style="padding-top: 1rem">
