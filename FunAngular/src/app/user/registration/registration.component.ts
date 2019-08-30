@@ -24,10 +24,6 @@ export class RegistrationComponent implements OnInit {
 
 	//could use form builder to simpler the code 
 	registrationForm = new FormGroup({
-		name: new FormControl('', [
-			Validators.required,
-			RegistrationValidators.cannotContainSpace,
-		]),
 		email: new FormControl('', [
 			Validators.email,
 			Validators.required
@@ -38,9 +34,7 @@ export class RegistrationComponent implements OnInit {
 				RegistrationValidators.passwordLength
 			]),
 			confirmPassword: new FormControl('', Validators.required)
-		}, { validators: this.comparePasswords }),
-		question: new FormControl('', Validators.required),
-		answer: new FormControl('', Validators.required)
+		}, { validators: this.comparePasswords })
 	});
 
 	//custome validator within the same file as where it is used 
@@ -55,10 +49,6 @@ export class RegistrationComponent implements OnInit {
 	}
 
 	//use this can let the html became less mass
-	get name() {
-		return this.registrationForm.get('name');
-	}
-
 	get email() {
 		return this.registrationForm.get('email');
 	}
@@ -82,7 +72,6 @@ export class RegistrationComponent implements OnInit {
 
 	onSubmit() {
 		let body = {
-			UserName: this.registrationForm.value.name,
 			Email: this.registrationForm.value.email,
 			Password: this.registrationForm.value.matchPassword.password
 		}

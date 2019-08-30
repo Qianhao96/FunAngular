@@ -1,44 +1,17 @@
 
 <form [formGroup]="registrationForm" #f="ngForm" role="form" method="POST" (submit)="onSubmit()">
-    <div class="container">
+    <div class="container pl-5 pr-5">
         <div>
             <h2>Register New User</h2>
         </div>
 
         <div>
             <div>
-                <h5 class="u-inline">Username - 
-                    <div *ngIf="name.touched && name.invalid">
-                        <div *ngIf="name.errors.required" class="form-control-feedback">
-                            <span class="text-danger">
-                                Name is required
-                            </span>
-                        </div>
-    
-                        <div *ngIf="name.errors.spaceNotAllowed" class="form-control-feedback">
-                            <span class="text-danger">
-                                {{name.errors.spaceNotAllowed}}
-                            </span>
-                        </div>
-                    </div>
-                </h5>
-            </div>
-            <div>
-                <div class="form-group">
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <input formControlName="name" type="text" name="name" class="form-control" id="name" required>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <h5 class="u-inline">E-Mail Address - 
+                <h5 class="u-inline">Email Address 
                     <div *ngIf="email.touched && email.invalid">
                         <div *ngIf="email.errors.required" class="form-control-feedback">
                             <span class="text-danger align-middle">
-                                Email is required
+                                - Email is required
                             </span>
                         </div>
                         <div *ngIf="email.errors.email" class="form-control-feedback">
@@ -61,7 +34,7 @@
         <div formGroupName="matchPassword">
             <div>
                 <div>
-                    <h5 class="u-inline" for="password">Password -
+                    <h5 class="u-inline" for="password">Password
                         <div *ngIf="password.touched && password.invalid">
                             <div *ngIf="password.errors.required" class="form-control-feedback">
                                 <span class="text-danger align-middle">
@@ -82,7 +55,7 @@
 
             <div>
                 <div>
-                    <h5 class="u-inline"  for="confirmPassword">Confirm Password - 
+                    <h5 class="u-inline"  for="confirmPassword">Confirm Password
                         <div *ngIf="confirmPassword.touched && confirmPassword.invalid">
                             <div *ngIf="confirmPassword.errors.required" class="form-control-feedback">
                                 <span class="text-danger align-middle">
